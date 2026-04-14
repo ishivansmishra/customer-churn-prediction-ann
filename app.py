@@ -95,7 +95,22 @@ input_data = pd.concat(
 # -------------------------------
 # Ensure correct column order
 # -------------------------------
-input_data = input_data[scaler.feature_names_in_]
+expected_columns = [
+    'CreditScore',
+    'Gender',
+    'Age',
+    'Tenure',
+    'Balance',
+    'NumOfProducts',
+    'HasCrCard',
+    'IsActiveMember',
+    'EstimatedSalary',
+    'Geography_France',
+    'Geography_Germany',
+    'Geography_Spain',
+]
+
+input_data = input_data.reindex(columns=expected_columns, fill_value=0)
 
 # -------------------------------
 # Scale Input
